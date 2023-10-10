@@ -146,3 +146,38 @@ BEGIN
    END CASE;
 END;
 $$
+
+--1.4
+-- Primeira Solução
+DO $$
+DECLARE
+   valor_compra NUMERIC := valor_aleatorio_entre(1, 100);
+   valor_venda NUMERIC := valor_aleatorio_entre(1, 100);
+BEGIN   
+   IF valor_compra < 20 THEN
+      valor_venda := valor_compra * 1.45; 
+   ELSE
+      valor_venda := valor_compra * 1.30;  
+   END IF;
+   
+   RAISE NOTICE 'Valor de compra: R$%', valor_compra;
+   RAISE NOTICE 'Valor de venda: R$%', valor_venda;
+END;
+$$
+
+--Segunda Solução
+DO $$
+DECLARE
+   valor_compra NUMERIC := valor_aleatorio_entre(1, 100);
+   valor_venda NUMERIC := valor_aleatorio_entre(1, 100);
+BEGIN 
+     CASE 
+      WHEN valor_compra < 20 THEN 
+         valor_venda := valor_compra * 1.45;
+      ELSE
+         valor_venda := valor_compra * 1.30;
+   END CASE;
+   RAISE NOTICE 'Valor de compra: R$%', valor_compra;
+   RAISE NOTICE 'Valor de venda: R$%', valor_venda;
+END;
+$$
