@@ -181,3 +181,6 @@ BEGIN
    RAISE NOTICE 'Valor de venda: R$%', valor_venda;
 END;
 $$
+
+--1.5 Resolva o problema disponível no link a seguir
+-- Link não estava funcionando
