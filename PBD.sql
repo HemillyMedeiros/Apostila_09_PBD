@@ -72,3 +72,77 @@ BEGIN
 	END CASE;
 END;
 $$
+
+--1.3  Faça um programa que opera de acordo com o seguinte menu.
+--Primeira Solução
+DO $$
+DECLARE
+   opcao INT:= valor_aleatorio_entre(1, 100);
+   num1 INT:= valor_aleatorio_entre(1, 100);
+   num2 INT:= valor_aleatorio_entre(1, 100);
+   resultado INT:= valor_aleatorio_entre(1, 100);
+BEGIN
+   RAISE NOTICE 'Opções:';
+   RAISE NOTICE '1 - Soma';
+   RAISE NOTICE '2 - Subtração';
+   RAISE NOTICE '3 - Multiplicação';
+   RAISE NOTICE '4 - Divisão';
+
+   IF opcao = 1 THEN
+      resultado := num1 + num2;
+      RAISE NOTICE '% + % = %', num1, num2, resultado;
+   ELSIF opcao = 2 THEN
+      resultado := num1 - num2;
+      RAISE NOTICE '% - % = %', num1, num2, resultado;
+   ELSIF opcao = 3 THEN
+      resultado := num1 * num2;
+      RAISE NOTICE '% * % = %', num1, num2, resultado;
+   ELSIF opcao = 4 THEN
+      IF num2 = 0 THEN
+         RAISE NOTICE 'Não é possível dividir por zero.';
+      ELSE
+         resultado := num1 / num2;
+         RAISE NOTICE '% / % = %', num1, num2, resultado;
+      END IF;
+   ELSE
+      RAISE NOTICE 'Opção inválida.';
+   END IF;
+END;
+$$
+
+--Segunda Solução
+DO $$
+DECLARE
+   opcao INT:= valor_aleatorio_entre(1, 100);
+   num1 INT:= valor_aleatorio_entre(1, 100);
+   num2 INT:= valor_aleatorio_entre(1, 100);
+   resultado INT:= valor_aleatorio_entre(1, 100);
+BEGIN
+   RAISE NOTICE 'Opções:';
+   RAISE NOTICE '1 - Soma';
+   RAISE NOTICE '2 - Subtração';
+   RAISE NOTICE '3 - Multiplicação';
+   RAISE NOTICE '4 - Divisão';
+
+   CASE opcao
+      WHEN 1 THEN
+         resultado := num1 + num2;
+         RAISE NOTICE '% + % = %', num1, num2, resultado;
+      WHEN 2 THEN
+         resultado := num1 - num2;
+         RAISE NOTICE '% - % = %', num1, num2, resultado;
+      WHEN 3 THEN
+         resultado := num1 * num2;
+         RAISE NOTICE '% * % = %', num1, num2, resultado;
+      WHEN 4 THEN
+         IF num2 = 0 THEN
+            RAISE NOTICE 'Não é possível dividir por zero.';
+         ELSE
+            resultado := num1 / num2;
+            RAISE NOTICE '% / % = %', num1, num2, resultado;
+         END IF;
+      ELSE
+         RAISE NOTICE 'Opção inválida.';
+   END CASE;
+END;
+$$
